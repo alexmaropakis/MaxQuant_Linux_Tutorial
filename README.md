@@ -18,7 +18,7 @@ The most recent MaxQuant version can be accessed via an academic license [here](
 
 Download the wanted zip file and put it into your desired directory. 
 
-Run these commands:
+**Run these commands:**
 ```
 mkdir /home/maropakis.a/MQ
 cd MQ
@@ -65,7 +65,7 @@ source ~/.bashrc
 echo dotnet --version
 
 ```
-Run MaxQuant with this command: 
+**Run MaxQuant with this command: **
 
 ```
 srun dotnet </path/to/MaxQuantCmd.exe> (or *.dll for more recent MQ versions) </path/to/mqpar.xml>
@@ -80,13 +80,13 @@ To run ```gen_mqXML.py```, you must have created a template ```mqpar.xml``` file
 
 I have added some template .xml files in the ```templates/``` folder. The generation script is in ```generation_scripts/```.
 
-Run ```gen_mqXML.py``` like this:
+**Run ```gen_mqXML.py``` like this:**
 
 ```
 python gen_mqXML.py </path/to/template/mqpar.xml> </path/to/raw/file/folder> -o mqpar_file_name.xml -e Experiment_name -s sample_name
 ```
 
-Example usage:
+**Example usage:**
 ```
 python Alex_gen_mqXML.py /home/maropakis.a/scripts/XML/templates/tmt10_DP_template.xml \
     /scratch/maropakis.a/MQ_raw/Ping_2018/ACG/b3/ \
