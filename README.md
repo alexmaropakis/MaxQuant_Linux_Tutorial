@@ -1,6 +1,6 @@
 # MaxQuant for Linux Tutorial 
 
-Due to sparse official documentation, Albert Chen wrote a [Guide to MaxQuant in Linux](https://github.com/atc3/maxquant_linux_guide/tree/master) in 2019 for beginner users. It has been many years since then, so this guide is targeted toward more recent beginners planning to run more recent versions of MaxQuant in Linux. This tutorial is optimized for [Northeastern University's Research Computing Cluster](https://rc.northeastern.edu/), which is hosted at the [Massachusetts Green High-Performance Computing Center (MGHPCC)](https://mghpcc.org/) in Holyoke, MA. It is also found on my [blog](https://alexandramaropakis.substack.com/p/maxquant-for-linux-tutorial), and this [slideshow](https://docs.google.com/presentation/d/1B17nJ5mraiBtOuA2bwJ5FDNDBPWAIL75gxoQ4phoTI0/edit?usp=sharing) contains more information pertaining to running MaxQuant on the NU Explorer Cluster.
+Due to sparse official documentation, Albert Chen wrote an incredible [Guide to MaxQuant in Linux](https://github.com/atc3/maxquant_linux_guide/tree/master) in 2019 for beginner users. It has been many years since then, so this guide is targeted toward more recent beginners planning to run more recent versions of MaxQuant in Linux. This tutorial is optimized for [Northeastern University's Research Computing Cluster](https://rc.northeastern.edu/), which is hosted at the [Massachusetts Green High-Performance Computing Center (MGHPCC)](https://mghpcc.org/) in Holyoke, MA. It is also found on my [blog](https://alexandramaropakis.substack.com/p/maxquant-for-linux-tutorial), and this [slideshow](https://docs.google.com/presentation/d/1B17nJ5mraiBtOuA2bwJ5FDNDBPWAIL75gxoQ4phoTI0/edit?usp=sharing) contains more information pertaining to running MaxQuant on the NU Explorer Cluster.
 
 Last updated 06-03-2026.
 
@@ -74,7 +74,7 @@ srun dotnet </path/to/MaxQuantCmd.exe> (or *.dll for more recent MQ versions) </
 
 ## Generating mqpar.xml files 
 
-In his original tutorial, Albert Chen provided a Python script ```gen_mqpar.py``` which took a mqpar.xml template and filled it in depending on your parameters. I have slightly altered this script for my needs to produce ```gen_mqXML.py```, which takes more arguments and affords a bit more flexibility. 
+In his original tutorial, Albert Chen wrote a great Python script ```gen_mqpar.py``` which took a mqpar.xml template and filled it in depending on your parameters. I have slightly altered this script for my needs to produce a newer ```gen_mqXML.py```, which takes more arguments and affords a bit more flexibility. 
 
 To run ```gen_mqXML.py```, you must have created a template ```mqpar.xml``` file representing the configuration for a specific MaxQuant search. You should first generate these in MaxQuant GUI as it is easier to verify the validity of the .xml file before moving it into the Linux instance. 
 
@@ -86,7 +86,19 @@ Run ```gen_mqXML.py``` like this:
 python gen_mqXML.py </path/to/template/mqpar.xml> </path/to/raw/file/folder> -o mqpar_file_name.xml -e Experiment_name -s sample_name
 ```
 
-All arguments available include:
+Example usage:
+```
+python Alex_gen_mqXML.py /home/maropakis.a/scripts/XML/templates/tmt10_DP_template.xml \
+    /scratch/maropakis.a/MQ_raw/Ping_2018/ACG/b3/ \
+    -o Ping2018_ACG_B3_DP.xml \
+    -e Ping_2018 \
+    -s S3 \
+    --species human \
+    --partition short \
+    -t 21
+```
+
+These are only the required arguments. All arguments available include:
 ```
 parser.add_argument('input_xml', type=argparse.FileType('r', encoding='UTF-8'))
 parser.add_argument('raw_file_folders', type=str, nargs='+')
