@@ -65,7 +65,7 @@ source ~/.bashrc
 echo dotnet --version
 
 ```
-**Run MaxQuant with this command: **
+**Run MaxQuant with this command:**
 
 ```
 srun dotnet </path/to/MaxQuantCmd.exe> (or *.dll for more recent MQ versions) </path/to/mqpar.xml>
