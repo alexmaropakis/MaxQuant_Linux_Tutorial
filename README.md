@@ -1,6 +1,6 @@
 # MaxQuant for Linux Tutorial 
 
-Due to sparse official documentation, Albert Chen wrote a [Guide to MaxQuant in Linux](https://github.com/atc3/maxquant_linux_guide/tree/master) in 2019 for beginner users. It has been many years since then, so this guide is targeted toward more recent beginners planning to run more recent versions of MaxQuant in Linux. This tutorial is optimized for [Northeastern University's Research Computing Cluster](https://rc.northeastern.edu/), which is hosted at the [Massachusetts Green High-Performance Computing Center (MGHPCC)](https://mghpcc.org/) in Holyoke, MA. 
+Due to sparse official documentation, Albert Chen wrote a [Guide to MaxQuant in Linux](https://github.com/atc3/maxquant_linux_guide/tree/master) in 2019 for beginner users. It has been many years since then, so this guide is targeted toward more recent beginners planning to run more recent versions of MaxQuant in Linux. This tutorial is optimized for [Northeastern University's Research Computing Cluster](https://rc.northeastern.edu/), which is hosted at the [Massachusetts Green High-Performance Computing Center (MGHPCC)](https://mghpcc.org/) in Holyoke, MA. It is also found on my [blog](https://alexandramaropakis.substack.com/p/maxquant-for-linux-tutorial).
 
 ## Pipeline
 1. Download MaxQuant version into home directory
