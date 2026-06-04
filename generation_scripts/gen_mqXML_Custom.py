@@ -9,7 +9,7 @@ import re
 # The purpose of this script is to search for sample-specific FASTAs and fill them into the .xml
 
 # Credit to foundational work by Albert Chen 
-# Last updated by: Alex Maropakis, 06-03-2026
+# Last updated by: Alex Maropakis, 06-04-2026
 
 print("Defining arguments...")
 parser = argparse.ArgumentParser(description='Generate MaxQuant XML and SLURM script')
@@ -61,9 +61,10 @@ elif 'Ping2018_FC_B' in outfile_key:
 # Takasugi datasets
 elif 'Takasugi_2024' in outfile_key:
     tissue = outfile_key.replace('Takasugi_2024_', '').replace('_Val', '')
+
     matched_fastas = [
         x for x in fasta_candidates
-        if args.sample in x and tissue.lower() in x.lower()
+        if x.lower().endswith(f'_{tissue.lower()}_mtp.fasta')
     ]
 
 if len(matched_fastas) == 0:
@@ -101,7 +102,7 @@ if start_idx == -1 or end_idx == -1:
 
 mqpar_text = mqpar_text[:start_idx] + fasta_block + mqpar_text[end_idx:]
 
-# Collect raw files in order of fraction number
+# Collect raw files in order of fraction number 
 print("Collecting raw files...")
 raw_files = []
 for folder in args.raw_file_folders:
@@ -160,7 +161,7 @@ xml_path = os.path.join(xml_dir, os.path.basename(args.outfile))
 with open(xml_path, 'w') as f:
     f.write(mqpar_text)
 
-# Generate SLURM script
+# Generate SLURM script 
 search_name = os.path.splitext(os.path.basename(args.outfile))[0]
 
 print(f"Generating SLURM script... {search_name}")
@@ -194,7 +195,7 @@ os.makedirs(os.path.dirname(slurm_path), exist_ok=True)
 with open(slurm_path, 'w') as f:
     f.write(slurm_script)
 
-# Summary
+# Summary 
 print(f"XML and SLURM script successfully created! {search_name}")
 print(f"  FASTA:   {fasta_path}")
 print(f"  Sample: {args.sample}")
